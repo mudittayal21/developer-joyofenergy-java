@@ -2,7 +2,7 @@ package uk.tw.energy.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import uk.tw.energy.helper.CostCalculatorHelper;
+import uk.tw.energy.helper.CostCalculator;
 import uk.tw.energy.model.ElectricityReading;
 import uk.tw.energy.model.PricePlan;
 import uk.tw.energy.service.MeterReadingService;
@@ -34,7 +34,7 @@ public class PricePlanServiceImpl implements PricePlanService {
         }
 
         return Optional.of(pricePlans.stream().collect(
-                Collectors.toMap(PricePlan::getPlanName, t -> CostCalculatorHelper.calculateCost(electricityReadings.get(), t))
+                Collectors.toMap(PricePlan::getPlanName, t -> CostCalculator.calculateCost(electricityReadings.get(), t))
         ));
     }
 }

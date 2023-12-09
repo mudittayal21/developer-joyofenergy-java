@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.util.Comparator;
 import java.util.List;
 
-public class CostCalculatorHelper {
+public class CostCalculator {
     public static BigDecimal calculateCost(List<ElectricityReading> electricityReadings, PricePlan pricePlan) {
         BigDecimal average = calculateAverageReading(electricityReadings);
         BigDecimal timeElapsed = calculateTimeElapsed(electricityReadings);
