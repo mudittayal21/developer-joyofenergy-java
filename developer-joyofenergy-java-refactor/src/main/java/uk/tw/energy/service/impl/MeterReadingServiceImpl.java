@@ -2,7 +2,7 @@ package uk.tw.energy.service.impl;
 
 import org.springframework.stereotype.Service;
 import uk.tw.energy.model.ElectricityReading;
-import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.model.MeterReading;
 import uk.tw.energy.service.MeterReadingService;
 
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ public class MeterReadingServiceImpl implements MeterReadingService {
     }
 
     @Override
-    public void storeReadings(MeterReadings meterReadings) {
-        if (!meterAssociatedReadings.containsKey(meterReadings.smartMeterId())) {
-            meterAssociatedReadings.put(meterReadings.smartMeterId(), new ArrayList<>());
+    public void storeReadings(MeterReading meterReading) {
+        if (!meterAssociatedReadings.containsKey(meterReading.smartMeterId())) {
+            meterAssociatedReadings.put(meterReading.smartMeterId(), new ArrayList<>());
         }
-        meterAssociatedReadings.get(meterReadings.smartMeterId()).addAll(meterReadings.electricityReadings());
+        meterAssociatedReadings.get(meterReading.smartMeterId()).addAll(meterReading.electricityReadings());
     }
 }

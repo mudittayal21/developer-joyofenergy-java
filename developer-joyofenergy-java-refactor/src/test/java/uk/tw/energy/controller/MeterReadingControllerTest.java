@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import uk.tw.energy.builders.MeterReadingsBuilder;
 import uk.tw.energy.model.ElectricityReading;
-import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.model.MeterReading;
 import uk.tw.energy.service.MeterReadingService;
 import uk.tw.energy.service.impl.MeterReadingServiceImpl;
 
@@ -30,56 +30,56 @@ public class MeterReadingControllerTest {
 
     @Test
     public void givenNoMeterIdIsSuppliedWhenStoringShouldReturnErrorResponse() {
-        MeterReadings meterReadings = new MeterReadings(null, Collections.emptyList());
-        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        MeterReading meterReading = new MeterReading(null, Collections.emptyList());
+        assertThat(meterReadingController.storeReadings(meterReading).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
     public void givenEmptyMeterReadingShouldReturnErrorResponse() {
-        MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, Collections.emptyList());
-        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        MeterReading meterReading = new MeterReading(SMART_METER_ID, Collections.emptyList());
+        assertThat(meterReadingController.storeReadings(meterReading).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
     public void givenNullReadingsAreSuppliedWhenStoringShouldReturnErrorResponse() {
-        MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, null);
-        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        MeterReading meterReading = new MeterReading(SMART_METER_ID, null);
+        assertThat(meterReadingController.storeReadings(meterReading).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
     public void givenMultipleBatchesOfMeterReadingsShouldStore() {
-        MeterReadings meterReadings = new MeterReadingsBuilder().setSmartMeterId(SMART_METER_ID)
+        MeterReading meterReading = new MeterReadingsBuilder().setSmartMeterId(SMART_METER_ID)
                 .generateElectricityReadings()
                 .build();
 
-        MeterReadings otherMeterReadings = new MeterReadingsBuilder().setSmartMeterId(SMART_METER_ID)
+        MeterReading otherMeterReading = new MeterReadingsBuilder().setSmartMeterId(SMART_METER_ID)
                 .generateElectricityReadings()
                 .build();
 
-        meterReadingController.storeReadings(meterReadings);
-        meterReadingController.storeReadings(otherMeterReadings);
+        meterReadingController.storeReadings(meterReading);
+        meterReadingController.storeReadings(otherMeterReading);
 
         List<ElectricityReading> expectedElectricityReadings = new ArrayList<>();
-        expectedElectricityReadings.addAll(meterReadings.electricityReadings());
-        expectedElectricityReadings.addAll(otherMeterReadings.electricityReadings());
+        expectedElectricityReadings.addAll(meterReading.electricityReadings());
+        expectedElectricityReadings.addAll(otherMeterReading.electricityReadings());
 
         assertThat(meterReadingService.getReadings(SMART_METER_ID).get()).isEqualTo(expectedElectricityReadings);
     }
 
     @Test
     public void givenMeterReadingsAssociatedWithTheUserShouldStoreAssociatedWithUser() {
-        MeterReadings meterReadings = new MeterReadingsBuilder().setSmartMeterId(SMART_METER_ID)
+        MeterReading meterReading = new MeterReadingsBuilder().setSmartMeterId(SMART_METER_ID)
                 .generateElectricityReadings()
                 .build();
 
-        MeterReadings otherMeterReadings = new MeterReadingsBuilder().setSmartMeterId("00001")
+        MeterReading otherMeterReading = new MeterReadingsBuilder().setSmartMeterId("00001")
                 .generateElectricityReadings()
                 .build();
 
-        meterReadingController.storeReadings(meterReadings);
-        meterReadingController.storeReadings(otherMeterReadings);
+        meterReadingController.storeReadings(meterReading);
+        meterReadingController.storeReadings(otherMeterReading);
 
-        assertThat(meterReadingService.getReadings(SMART_METER_ID).get()).isEqualTo(meterReadings.electricityReadings());
+        assertThat(meterReadingService.getReadings(SMART_METER_ID).get()).isEqualTo(meterReading.electricityReadings());
     }
 
     @Test

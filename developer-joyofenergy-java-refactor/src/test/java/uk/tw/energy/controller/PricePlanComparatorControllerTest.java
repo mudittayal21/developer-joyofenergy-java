@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import uk.tw.energy.model.ElectricityReading;
-import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.model.MeterReading;
 import uk.tw.energy.model.PricePlan;
 import uk.tw.energy.service.AccountService;
 import uk.tw.energy.service.MeterReadingService;
@@ -57,9 +57,9 @@ public class PricePlanComparatorControllerTest {
         ElectricityReading electricityReading = new ElectricityReading(Instant.now().minusSeconds(3600), BigDecimal.valueOf(15.0));
         ElectricityReading otherReading = new ElectricityReading(Instant.now(), BigDecimal.valueOf(5.0));
 
-        MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
+        MeterReading meterReading = new MeterReading(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
 
-        meterReadingService.storeReadings(meterReadings);
+        meterReadingService.storeReadings(meterReading);
 
         Map<String, BigDecimal> expectedPricePlanToCost = new HashMap<>();
         expectedPricePlanToCost.put(PRICE_PLAN_1_ID, BigDecimal.valueOf(100.0));
@@ -78,9 +78,9 @@ public class PricePlanComparatorControllerTest {
         ElectricityReading electricityReading = new ElectricityReading(Instant.now().minusSeconds(1800), BigDecimal.valueOf(35.0));
         ElectricityReading otherReading = new ElectricityReading(Instant.now(), BigDecimal.valueOf(3.0));
 
-        MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
+        MeterReading meterReading = new MeterReading(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
 
-        meterReadingService.storeReadings(meterReadings);
+        meterReadingService.storeReadings(meterReading);
 
         List<Map.Entry<String, BigDecimal>> expectedPricePlanToCost = new ArrayList<>();
         expectedPricePlanToCost.add(new AbstractMap.SimpleEntry<>(PRICE_PLAN_2_ID, BigDecimal.valueOf(38.0)));
@@ -97,9 +97,9 @@ public class PricePlanComparatorControllerTest {
         ElectricityReading electricityReading = new ElectricityReading(Instant.now().minusSeconds(2700), BigDecimal.valueOf(5.0));
         ElectricityReading otherReading = new ElectricityReading(Instant.now(), BigDecimal.valueOf(20.0));
 
-        MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
+        MeterReading meterReading = new MeterReading(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
 
-        meterReadingService.storeReadings(meterReadings);
+        meterReadingService.storeReadings(meterReading);
 
         List<Map.Entry<String, BigDecimal>> expectedPricePlanToCost = new ArrayList<>();
         expectedPricePlanToCost.add(new AbstractMap.SimpleEntry<>(PRICE_PLAN_2_ID, BigDecimal.valueOf(16.7)));
@@ -114,9 +114,9 @@ public class PricePlanComparatorControllerTest {
         ElectricityReading electricityReading = new ElectricityReading(Instant.now().minusSeconds(3600), BigDecimal.valueOf(25.0));
         ElectricityReading otherReading = new ElectricityReading(Instant.now(), BigDecimal.valueOf(3.0));
 
-        MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
+        MeterReading meterReading = new MeterReading(SMART_METER_ID, Arrays.asList(electricityReading, otherReading));
 
-        meterReadingService.storeReadings(meterReadings);
+        meterReadingService.storeReadings(meterReading);
 
         List<Map.Entry<String, BigDecimal>> expectedPricePlanToCost = new ArrayList<>();
         expectedPricePlanToCost.add(new AbstractMap.SimpleEntry<>(PRICE_PLAN_2_ID, BigDecimal.valueOf(14.0)));

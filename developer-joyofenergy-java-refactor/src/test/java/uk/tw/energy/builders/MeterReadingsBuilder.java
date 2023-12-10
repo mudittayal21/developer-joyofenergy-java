@@ -2,7 +2,7 @@ package uk.tw.energy.builders;
 
 import uk.tw.energy.helper.ElectricityReadingsGenerator;
 import uk.tw.energy.model.ElectricityReading;
-import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.model.MeterReading;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class MeterReadingsBuilder {
         return this;
     }
 
-    public MeterReadings build() {
-        return new MeterReadings(smartMeterId, electricityReadings);
+    public MeterReading build() {
+        return new MeterReading(smartMeterId, electricityReadings);
     }
 }

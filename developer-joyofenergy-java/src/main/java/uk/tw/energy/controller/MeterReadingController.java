@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.tw.energy.domain.ElectricityReading;
-import uk.tw.energy.domain.MeterReadings;
+import uk.tw.energy.domain.MeterReading;
 import uk.tw.energy.service.MeterReadingService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/readings")
@@ -27,7 +25,7 @@ public class MeterReadingController {
     }
 
     @PostMapping("/store")
-    public ResponseEntity storeReadings(@RequestBody MeterReadings meterReadings) {
+    public ResponseEntity storeReadings(@RequestBody MeterReading meterReadings) {
         if (!isMeterReadingsValid(meterReadings)) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
@@ -35,7 +33,7 @@ public class MeterReadingController {
         return ResponseEntity.ok().build();
     }
 
-    private boolean isMeterReadingsValid(MeterReadings meterReadings) {
+    private boolean isMeterReadingsValid(MeterReading meterReadings) {
         String smartMeterId = meterReadings.smartMeterId();
         List<ElectricityReading> electricityReadings = meterReadings.electricityReadings();
         return smartMeterId != null && !smartMeterId.isEmpty()

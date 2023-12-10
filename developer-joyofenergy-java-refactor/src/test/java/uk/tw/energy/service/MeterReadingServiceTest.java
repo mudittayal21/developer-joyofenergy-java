@@ -2,7 +2,7 @@ package uk.tw.energy.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.model.MeterReading;
 import uk.tw.energy.service.impl.MeterReadingServiceImpl;
 
 import java.util.ArrayList;
@@ -27,9 +27,9 @@ public class MeterReadingServiceTest {
 
     @Test
     public void givenMeterReadingThatExistsShouldReturnMeterReadings() {
-        MeterReadings meterReadings = new MeterReadings("random-id", new ArrayList<>());
+        MeterReading meterReading = new MeterReading("random-id", new ArrayList<>());
 
-        meterReadingService.storeReadings(meterReadings);
+        meterReadingService.storeReadings(meterReading);
         assertThat(meterReadingService.getReadings("random-id")).isEqualTo(Optional.of(new ArrayList<>()));
     }
 }

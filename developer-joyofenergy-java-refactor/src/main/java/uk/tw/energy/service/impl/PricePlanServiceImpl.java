@@ -1,6 +1,5 @@
 package uk.tw.energy.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.tw.energy.helper.CostCalculator;
 import uk.tw.energy.model.ElectricityReading;
