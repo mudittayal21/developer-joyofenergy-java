@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import uk.tw.energy.service.AccountService;
+import uk.tw.energy.service.PricePlanService;
 import uk.tw.energy.service.impl.PricePlanServiceImpl;
 
 import java.math.BigDecimal;
@@ -24,10 +25,12 @@ public class PricePlanComparatorController {
 
     public final static String PRICE_PLAN_ID_KEY = "pricePlanId";
     public final static String PRICE_PLAN_COMPARISONS_KEY = "pricePlanComparisons";
-    @Autowired
-    private PricePlanServiceImpl pricePlanService;
-    @Autowired
-    private AccountService accountService;
+    private final PricePlanService pricePlanService;
+    private final AccountService accountService;
+    public PricePlanComparatorController(PricePlanService pricePlanService, AccountService accountService) {
+        this.pricePlanService = pricePlanService;
+        this.accountService = accountService;
+    }
 
     @GetMapping("/compare-all/{smartMeterId}")
     public ResponseEntity<Map<String, Object>> calculatedCostForEachPricePlan(@PathVariable String smartMeterId) {

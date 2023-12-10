@@ -11,16 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.tw.energy.model.ElectricityReading;
 import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.service.MeterReadingService;
 import uk.tw.energy.service.impl.MeterReadingServiceImpl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/readings")
 public class MeterReadingController {
-    @Autowired
-    private MeterReadingServiceImpl meterReadingService;
+    private final MeterReadingService meterReadingService;
+    public MeterReadingController(MeterReadingService meterReadingService) {
+        this.meterReadingService = meterReadingService;
+    }
 
     @PostMapping("/store")
     public ResponseEntity storeReadings(@RequestBody MeterReadings meterReadings) {

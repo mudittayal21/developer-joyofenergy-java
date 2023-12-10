@@ -2,7 +2,7 @@ package uk.tw.energy.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import uk.tw.energy.service.impl.AccountServiceImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,7 @@ public class AccountServiceTest {
 
     private static final String PRICE_PLAN_ID = "price-plan-id";
     private static final String SMART_METER_ID = "smart-meter-id";
-    @Autowired
+
     private AccountService accountService;
 
     @BeforeEach
@@ -21,7 +21,7 @@ public class AccountServiceTest {
         Map<String, String> smartMeterToPricePlanAccounts = new HashMap<>();
         smartMeterToPricePlanAccounts.put(SMART_METER_ID, PRICE_PLAN_ID);
 
-//        accountService = new AccountService(smartMeterToPricePlanAccounts);
+        accountService = new AccountServiceImpl(smartMeterToPricePlanAccounts);
     }
 
     @Test

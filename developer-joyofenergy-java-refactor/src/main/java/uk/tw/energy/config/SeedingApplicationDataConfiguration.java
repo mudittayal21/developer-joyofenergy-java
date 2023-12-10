@@ -37,10 +37,9 @@ public class SeedingApplicationDataConfiguration {
     @Bean
     public Map<String, List<ElectricityReading>> perMeterElectricityReadings() {
         final Map<String, List<ElectricityReading>> readings = new HashMap<>();
-        final ElectricityReadingsGenerator electricityReadingsGenerator = new ElectricityReadingsGenerator();
         smartMeterToPricePlanAccounts()
                 .keySet()
-                .forEach(smartMeterId -> readings.put(smartMeterId, electricityReadingsGenerator.generate(20)));
+                .forEach(smartMeterId -> readings.put(smartMeterId, ElectricityReadingsGenerator.generate(20)));
         return readings;
     }
 

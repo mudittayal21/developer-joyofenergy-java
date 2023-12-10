@@ -1,8 +1,8 @@
 package uk.tw.energy.builders;
 
+import uk.tw.energy.helper.ElectricityReadingsGenerator;
 import uk.tw.energy.model.ElectricityReading;
 import uk.tw.energy.model.MeterReadings;
-import uk.tw.energy.helper.ElectricityReadingsGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +24,7 @@ public class MeterReadingsBuilder {
     }
 
     public MeterReadingsBuilder generateElectricityReadings(int number) {
-        ElectricityReadingsGenerator readingsBuilder = new ElectricityReadingsGenerator();
-        this.electricityReadings = readingsBuilder.generate(number);
+        this.electricityReadings = ElectricityReadingsGenerator.generate(number);
         return this;
     }
 

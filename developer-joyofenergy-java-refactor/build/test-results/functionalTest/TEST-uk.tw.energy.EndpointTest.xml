@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="uk.tw.energy.EndpointTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-12-10T09:15:43" hostname="LAPTOP-MUDIT-ID" time="1.935">
+  <properties/>
+  <testcase name="givenMeterIdAndLimitShouldReturnRecommendedCheapestPricePlans()" classname="uk.tw.energy.EndpointTest" time="1.833"/>
+  <testcase name="shouldStoreReadings()" classname="uk.tw.energy.EndpointTest" time="0.017"/>
+  <testcase name="givenMeterIdShouldReturnAMeterReadingAssociatedWithMeterId()" classname="uk.tw.energy.EndpointTest" time="0.049"/>
+  <testcase name="shouldCalculateAllPrices()" classname="uk.tw.energy.EndpointTest" time="0.026"/>
+  <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.4)
+
+2023-12-10T14:45:41.661+05:30  INFO 34628 --- [    Test worker] uk.tw.energy.EndpointTest                : Starting EndpointTest using Java 17.0.3.1 with PID 34628 (started by Mudit Tayal in C:\Projects\Interviews\ThoughtWorks\mudittayal21\developer-joyofenergy-java\developer-joyofenergy-java-refactor)
+2023-12-10T14:45:41.665+05:30  INFO 34628 --- [    Test worker] uk.tw.energy.EndpointTest                : No active profile set, falling back to 1 default profile: "default"
+2023-12-10T14:45:42.640+05:30  INFO 34628 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2023-12-10T14:45:42.650+05:30  INFO 34628 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-12-10T14:45:42.651+05:30  INFO 34628 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2023-12-10T14:45:42.727+05:30  INFO 34628 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-12-10T14:45:42.729+05:30  INFO 34628 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1038 ms
+2023-12-10T14:45:43.130+05:30  INFO 34628 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 63870 (http) with context path ''
+2023-12-10T14:45:43.141+05:30  INFO 34628 --- [    Test worker] uk.tw.energy.EndpointTest                : Started EndpointTest in 1.721 seconds (process running for 2.754)
+2023-12-10T14:45:44.794+05:30  INFO 34628 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-10T14:45:44.794+05:30  INFO 34628 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-12-10T14:45:44.795+05:30  INFO 34628 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

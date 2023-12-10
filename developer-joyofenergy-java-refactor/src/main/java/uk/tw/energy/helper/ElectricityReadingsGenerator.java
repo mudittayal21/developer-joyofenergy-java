@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class ElectricityReadingsGenerator {
 
-    public List<ElectricityReading> generate(int number) {
+    public static List<ElectricityReading> generate(int number) {
         List<ElectricityReading> readings = new ArrayList<>();
         Instant now = Instant.now();
 

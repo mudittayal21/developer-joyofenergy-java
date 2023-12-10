@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
 public class PricePlanServiceImpl implements PricePlanService {
 
     private final List<PricePlan> pricePlans;
-    @Autowired
-    private MeterReadingService meterReadingService;
+    private final MeterReadingService meterReadingService;
 
-    public PricePlanServiceImpl(List<PricePlan> pricePlans) {
+    public PricePlanServiceImpl(List<PricePlan> pricePlans, MeterReadingService meterReadingService) {
         this.pricePlans = pricePlans;
+        this.meterReadingService = meterReadingService;
     }
 
     @Override

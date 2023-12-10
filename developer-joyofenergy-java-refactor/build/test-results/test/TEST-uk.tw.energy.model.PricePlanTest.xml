@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="uk.tw.energy.model.PricePlanTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-12-10T06:14:07" hostname="LAPTOP-MUDIT-ID" time="0.013">
+  <properties/>
+  <testcase name="shouldReceiveMultipleExceptionalDateTimes()" classname="uk.tw.energy.model.PricePlanTest" time="0.006"/>
+  <testcase name="shouldReturnAnExceptionPriceGivenExceptionalDateTime()" classname="uk.tw.energy.model.PricePlanTest" time="0.001"/>
+  <testcase name="shouldReturnTheBasePriceGivenAnOrdinaryDateTime()" classname="uk.tw.energy.model.PricePlanTest" time="0.001"/>
+  <testcase name="shouldReturnTheEnergySupplierGivenInTheConstructor()" classname="uk.tw.energy.model.PricePlanTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

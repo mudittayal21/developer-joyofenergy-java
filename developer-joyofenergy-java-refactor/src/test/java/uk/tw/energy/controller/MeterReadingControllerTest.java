@@ -2,11 +2,11 @@ package uk.tw.energy.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import uk.tw.energy.builders.MeterReadingsBuilder;
 import uk.tw.energy.model.ElectricityReading;
 import uk.tw.energy.model.MeterReadings;
+import uk.tw.energy.service.MeterReadingService;
 import uk.tw.energy.service.impl.MeterReadingServiceImpl;
 
 import java.util.ArrayList;
@@ -19,32 +19,31 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class MeterReadingControllerTest {
 
     private static final String SMART_METER_ID = "10101010";
-    @Autowired
     private MeterReadingController meterReadingController;
-    private MeterReadingServiceImpl meterReadingService;
+    private MeterReadingService meterReadingService;
 
     @BeforeEach
     public void setUp() {
         this.meterReadingService = new MeterReadingServiceImpl(new HashMap<>());
-//        this.meterReadingController = new MeterReadingController(meterReadingService);
+        this.meterReadingController = new MeterReadingController(meterReadingService);
     }
 
     @Test
     public void givenNoMeterIdIsSuppliedWhenStoringShouldReturnErrorResponse() {
         MeterReadings meterReadings = new MeterReadings(null, Collections.emptyList());
-        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
     public void givenEmptyMeterReadingShouldReturnErrorResponse() {
         MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, Collections.emptyList());
-        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
     public void givenNullReadingsAreSuppliedWhenStoringShouldReturnErrorResponse() {
         MeterReadings meterReadings = new MeterReadings(SMART_METER_ID, null);
-        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
+        assertThat(meterReadingController.storeReadings(meterReadings).getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
